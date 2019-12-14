@@ -11,8 +11,8 @@ export class ClienteService {
     console.log('Spotify Service Listo');
   }
 
-  public getClientId(url: string, id: string) {
-    return this.http.get('http://localhost:8080/cliente/buscar/2').pipe(
+  public getClientId( id: string) {
+    return this.http.get('http://localhost:8080/cliente/consultar/clientes').pipe(
       map(data => data)
     );
   }

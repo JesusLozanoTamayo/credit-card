@@ -1,4 +1,4 @@
-export class InfoTarjetas {
+export interface InfoTarjetasModel {
         id: number;
         idCliente: number;
         montoAprobado: number;

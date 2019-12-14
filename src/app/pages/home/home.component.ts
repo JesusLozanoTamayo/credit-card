@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
 
   public getClientId() {
 
-    this.clienteService.getClientId('1').subscribe((res: any) => {
-        console.log(JSON.stringify(res))
+    this.clienteService.getClientId('1', '').subscribe((res: any) => {
+        console.log(JSON.stringify(res));
     });
 
   }
