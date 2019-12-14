@@ -1,38 +1,98 @@
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">Datos del Propietario</h4>
+                    </div>
+                    <form>
+                        <div class="card-body">
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="nombre" name="nombre" id="nombre" type="text" [(ngModel)]="clienteModel.nombre">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="apellido" type="text" name="apellido" [(ngModel)]="clienteModel.apellido">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="ocupacion" type="text" name="ocupacion" [(ngModel)]="clienteModel.ocupacionLaboral">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="ingresos" type="text" name="ingresos" [(ngModel)]="clienteModel.ingresos">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="cedula" type="text" name="cedula" [(ngModel)]="clienteModel.cedula">
+                                    </mat-form-field>
+                                </div>
+                            </div>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-        </ng-container>
+                            <br>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="saveCliente()">Enviar datos</button>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="apellido">
-            <th mat-header-cell *matHeaderCellDef> apellido </th>
-            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
-        </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="ocupacion">
-            <th mat-header-cell *matHeaderCellDef> ocupacion </th>
-            <td mat-cell *matCellDef="let element"> {{element.ocupacion}} </td>
-        </ng-container>
+                        </div>
 
-        <ng-container matColumnDef="ingresos">
-            <th mat-header-cell *matHeaderCellDef> ingresos </th>
-            <td mat-cell *matCellDef="let element"> {{element.ingresos}} </td>
-        </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+                    </form>
+                    <br>
+                    <form>
+                        <div>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                            <table mat-table [dataSource]="dataSource">
+
+
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="nombre">
+                                    <th mat-header-cell *matHeaderCellDef> nombre </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="apellido">
+                                    <th mat-header-cell *matHeaderCellDef> apellido </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="ocupacionLaboral">
+                                    <th mat-header-cell *matHeaderCellDef> ocupacionLaboral </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.ocupacionLaboral}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="cedula">
+                                    <th mat-header-cell *matHeaderCellDef> cedula </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="ingresos">
+                                    <th mat-header-cell *matHeaderCellDef> ingresos </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.ingresos}} </td>
+                                </ng-container>
+
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

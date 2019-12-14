@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
                private router: Router, private clienteService: ClienteService ) { }
 
   ngOnInit() {
-    this.getClientId();
   }
 
   salir() {
@@ -26,13 +25,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-  public getClientId() {
-
-    this.clienteService.getClientId('1', '').subscribe((res: any) => {
-        console.log(JSON.stringify(res));
-    });
-
-  }
 
 
 }

@@ -20,6 +20,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ClienteModel } from './models/client.model';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ MatDatepickerModule,
 MatNativeDateModule
 
   ],
-  providers: [],
+  providers: [ClienteModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

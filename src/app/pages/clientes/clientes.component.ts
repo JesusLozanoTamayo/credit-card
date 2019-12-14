@@ -4,10 +4,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { ClienteModel } from '../../models/client.model';
 import { InfoClienteModel } from 'src/app/models/info-cliente.model';
+import { InfoClientesDTO } from 'src/app/models/info.cliente.DTO';
+import { ClienteModel } from '../../models/client.model';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-clientes',
@@ -16,42 +16,64 @@ import { InfoClienteModel } from 'src/app/models/info-cliente.model';
 })
 export class ClientesComponent implements OnInit {
 
-  CLIENTE_DATA: ClienteModel[];
-
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'ocupacion', 'ingresos'];
-  dataSource = new MatTableDataSource<ClienteModel>(this.CLIENTE_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor( private auth: AuthService,
-               private router: Router, private clienteService: ClienteService ) { }
+  // tslint:disable-next-line: max-line-length
+  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'ocupacionLaboral', 'cedula', 'ingresos'];
 
+  clienteModel: ClienteModel = new ClienteModel();
 
-  ngOnInit() {
-  this.getClientId();
+  constructor( private auth: AuthService, 
+               private router: Router, private clienteService: ClienteService ) { this.getAllClient();
   }
 
 
+  consultaSol: ClienteModel[] = new Array<ClienteModel>();
+  dataSource = new MatTableDataSource<ClienteModel>();
 
-  public getClientId() {
 
-      this.clienteService.getClientId('1').subscribe((respuesta: any) => {
 
-                  const info = respuesta;
-                  this.CLIENTE_DATA = respuesta.cliente;
-                  console.log(JSON.stringify(this.CLIENTE_DATA));
+  ngOnInit() {
+
+  }
+
+  public getAllClient() {
+
+      this.clienteService.get('/cliente/consultar/clientes').subscribe((respuesta: any) => {
+
+        this.consultaSol = respuesta;
+        this.dataSource = new MatTableDataSource<ClienteModel>(this.consultaSol);
 
       });
 
   }
 
 
+  public saveCliente() {
+    console.log(this.clienteModel.nombre);
+    console.log(this.clienteModel.apellido);
+    console.log(this.clienteModel.ocupacionLaboral);
+    console.log(this.clienteModel.ingresos);
+
+    const object = {
+
+        nombre: this.clienteModel.nombre,
+        apellido: this.clienteModel.apellido,
+        ocupacionLaboral: this.clienteModel.ocupacionLaboral,
+        ingresos: this.clienteModel.ingresos,
+        cedula: this.clienteModel.cedula
+
+  };
+  console.log(JSON.stringify(object));
+    this.clienteService.post('/cliente/save-cliente', object).subscribe(
+      (respuesta: any) => {
+          console.log(JSON.stringify(respuesta));
+          this.getAllClient();
+      }
+    );
+
+  }
+
+
 }
-
-
-export interface PeriodicElement {
-  CLIENTE_DATA: ClienteModel;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {"id":1, "nombre":"2","apellido":"2","ocupacionLaboral":"2","ingresos":2}];
