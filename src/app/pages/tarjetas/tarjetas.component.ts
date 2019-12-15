@@ -70,7 +70,6 @@ public encontrarCliente(consultaCli: ClienteModel[]) {
 
   const result = consultaCli.find( ({ cedula }) => cedula === this.infoTarjetasModel.idCliente );
 
-  console.log("hola ::::: " , result); // { name: 'cherries', quantity: 5 }
   this.clienteModel.id = result.id;
   this.clienteModel.nombre = result.nombre;
   this.clienteModel.apellido = result.apellido;

@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard ] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login'   , component: LoginComponent },
-  { path: 'cliente'   , component: ClientesComponent },
-  { path: 'info-tarjetas'   , component: TarjetasComponent },
-  { path: '**', redirectTo: 'registro' }
+  { path: 'cliente'   , component: ClientesComponent, canActivate: [ AuthGuard ] },
+  { path: 'info-tarjetas'   , component: TarjetasComponent, canActivate: [ AuthGuard ] },
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
