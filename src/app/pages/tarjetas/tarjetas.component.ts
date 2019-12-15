@@ -25,8 +25,8 @@ export class TarjetasComponent implements OnInit {
   clienteModel: ClienteModel = new ClienteModel();
   infoTarjetasModel: InfoTarjetasModel = new InfoTarjetasModel();
 
-  constructor( private auth: AuthService, 
-               private router: Router, private clienteService: ClienteService ) { 
+  constructor( private auth: AuthService,
+               private router: Router, private clienteService: ClienteService ) {
             this.getAllClientTarjeta();
             this.getAllClient();
   }
@@ -47,9 +47,7 @@ export class TarjetasComponent implements OnInit {
       this.clienteService.get('/cliente/consultar/mostrar/clientes').subscribe((respuesta: any) => {
 
         this.consultaSol = respuesta;
-        console.log(respuesta)
         this.dataSource = new MatTableDataSource<InfoClientesDTO>(this.consultaSol);
-        console.log(this.consultaSol)
 
       });
 
@@ -108,8 +106,6 @@ public encontrarCliente(consultaCli: ClienteModel[]) {
           tipoTarjeta: this.infoTarjetasModel.tipoTarjeta
       }
   };
-
-  console.log("linea numero 113 ::::: " + JSON.stringify(object))
 
     this.clienteService.post('/cliente/save', object).subscribe(
       (respuesta: any) => {

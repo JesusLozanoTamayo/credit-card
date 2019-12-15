@@ -11,7 +11,7 @@ const httpOptions = {
   }),
 };
 
-const path = "http://192.99.42.228:8080";
+const path = 'http://192.99.42.228:8080';
 const ERROR_BACK = 'ERROR_';
 
 @Injectable({
@@ -61,6 +61,7 @@ export class ClienteService {
             && error.error.title.includes(ERROR_BACK)) {
             return throwError( error.error.title + '-' + (error.error.developerMessage || error.error.detail || ''));
           }
+        // tslint:disable-next-line: variable-name
         } catch ( _error) {
           console.error(
             `Backend returned code ${error.status}, ` +

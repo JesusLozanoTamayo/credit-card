@@ -11,3 +11,11 @@ body {
 table {
     width: 100%;
 }
+
+.container-flui {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
