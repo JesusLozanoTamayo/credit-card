@@ -21,6 +21,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ClienteModel } from './models/client.model';
+import { TarjetasComponent } from './pages/tarjetas/tarjetas.component';
+import { InfoTarjetasModel } from './models/infotarjetas.model';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { ClienteModel } from './models/client.model';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    ClientesComponent
+    ClientesComponent,
+    TarjetasComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +48,11 @@ import { ClienteModel } from './models/client.model';
     MatInputModule,
     MatGridListModule,
     MatStepperModule,
-MatDatepickerModule,
-MatNativeDateModule
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
-  providers: [ClienteModel],
+  providers: [ClienteModel, InfoTarjetasModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

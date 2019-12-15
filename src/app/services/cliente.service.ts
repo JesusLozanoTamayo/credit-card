@@ -11,7 +11,7 @@ const httpOptions = {
   }),
 };
 
-const path = "http://192.99.42.228:8080";
+const path = "http://localhost:8080";
 const ERROR_BACK = 'ERROR_';
 
 @Injectable({

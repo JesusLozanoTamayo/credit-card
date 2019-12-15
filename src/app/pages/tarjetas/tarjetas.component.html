@@ -1,5 +1,5 @@
-<div class=" container">
-    <app-navbar></app-navbar>
+<app-navbar></app-navbar>
+<div class="container">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-16">
@@ -13,27 +13,32 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="nombre" name="nombre" id="nombre" type="text" [(ngModel)]="clienteModel.nombre">
+                                        <input matInput placeholder="cedula" name="cedula" id="cedula" type="text" [(ngModel)]="infoTarjetasModel.idCliente">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="apellido" type="text" name="apellido" [(ngModel)]="clienteModel.apellido">
+                                        <input matInput placeholder="monto aprobado" type="text" name="monto aprobado" [(ngModel)]="infoTarjetasModel.montoAprobado">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="ocupacion" type="text" name="ocupacion" [(ngModel)]="clienteModel.ocupacionLaboral">
+                                        <input matInput placeholder="cvv" type="text" name="cvv" [(ngModel)]="infoTarjetasModel.cvv">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="ingresos" type="text" name="ingresos" [(ngModel)]="clienteModel.ingresos">
+                                        <input matInput placeholder="bloqueo" type="text" name="bloqueo" [(ngModel)]="infoTarjetasModel.bloqueo">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="numero tarjeta" type="text" name="numero tarjeta" [(ngModel)]="infoTarjetasModel.numTarjeta">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="cedula" type="text" name="cedula" [(ngModel)]="clienteModel.cedula">
+                                        <input matInput placeholder="tipo tarjeta" type="text" name="tipo tarjeta" [(ngModel)]="infoTarjetasModel.tipoTarjeta">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -53,9 +58,9 @@
                             <table mat-table [dataSource]="dataSource">
 
 
-                                <ng-container matColumnDef="id">
+                                <ng-container matColumnDef="idTarjeta">
                                     <th mat-header-cell *matHeaderCellDef> No. </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.idTarjeta}} </td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="nombre">
@@ -79,11 +84,35 @@
                                     <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
                                 </ng-container>
 
+                                <ng-container matColumnDef="tipoTarjeta">
+                                    <th mat-header-cell *matHeaderCellDef> tipoTarjeta </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.tipoTarjeta}} </td>
+                                </ng-container>
+
                                 <ng-container matColumnDef="ingresos">
                                     <th mat-header-cell *matHeaderCellDef> ingresos </th>
                                     <td mat-cell *matCellDef="let element"> {{element.ingresos}} </td>
                                 </ng-container>
 
+                                <ng-container matColumnDef="montoAprobado">
+                                    <th mat-header-cell *matHeaderCellDef> montoAprobado </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.montoAprobado}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="cvv">
+                                    <th mat-header-cell *matHeaderCellDef> cvv </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.cvv}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="bloqueo">
+                                    <th mat-header-cell *matHeaderCellDef> bloqueo </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.bloqueo}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="numTarjeta">
+                                    <th mat-header-cell *matHeaderCellDef> numTarjeta </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.numTarjeta}} </td>
+                                </ng-container>
 
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
